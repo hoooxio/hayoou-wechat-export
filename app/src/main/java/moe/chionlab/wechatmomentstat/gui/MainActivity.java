@@ -1,13 +1,12 @@
 package moe.chionlab.wechatmomentstat.gui;
 
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -17,29 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.net.ssl.HttpsURLConnection;
-
 import moe.chionlab.wechatmomentstat.Config;
 import moe.chionlab.wechatmomentstat.R;
 import moe.chionlab.wechatmomentstat.SnsStat;
+import moe.chionlab.wechatmomentstat.SubThread;
 import moe.chionlab.wechatmomentstat.Task;
 import moe.chionlab.wechatmomentstat.common.Share;
-import moe.chionlab.wechatmomentstat.SubThread;
-
-import android.content.SharedPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         task = new Task(this.getApplicationContext());
-        usernameFileEditText = (EditText)findViewById(R.id.username);
+//        usernameFileEditText = (EditText) findViewById(R.id.username);
 
-        if(Config.username.length()<3)
-            Config.username = this.getApplicationContext().getSharedPreferences("shared_perf_app", Context.MODE_PRIVATE).getString("username","");
+        if (Config.username.length() < 3)
+            Config.username = this.getApplicationContext().getSharedPreferences("shared_perf_app", Context.MODE_PRIVATE).getString("username", "");
 
-        if(Config.username.length()>3 && Config.username!=null) {
+        if (Config.username.length() > 3 && Config.username != null) {
             CharSequence u = Config.username;
-            Log.d("wechatmomentstat", "u "+u);
+            Log.d("wechatmomentstat", "u " + u);
             //usernameFileEditText.setText(u);
         }
 
@@ -71,16 +53,16 @@ public class MainActivity extends AppCompatActivity {
 
         Config.Context = this.getApplicationContext();
 
-        ((Button)findViewById(R.id.launch_button)).setOnClickListener(new View.OnClickListener() {
+        ((Button) findViewById(R.id.launch_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                usernameFileEditText = (EditText)findViewById(R.id.username);
-                Config.username=usernameFileEditText.getText().toString();
+//                usernameFileEditText = (EditText) findViewById(R.id.username);
+//                Config.username = usernameFileEditText.getText().toString();
 
-                SharedPreferences.Editor editor = Config.Context.getSharedPreferences("shared_perf_app", Context.MODE_PRIVATE).edit();
-                editor.putString("username", Config.username);
-                editor.commit();
+//                SharedPreferences.Editor editor = Config.Context.getSharedPreferences("shared_perf_app", Context.MODE_PRIVATE).edit();
+//                editor.putString("username", Config.username);
+//                editor.commit();
 
                 ((Button) findViewById(R.id.launch_button)).setText(R.string.exporting_sns);
                 ((Button) findViewById(R.id.launch_button)).setEnabled(false);
@@ -88,9 +70,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView descriptionHtmlTextView = (TextView)findViewById(R.id.description_html_textview);
+        TextView descriptionHtmlTextView = (TextView) findViewById(R.id.description_html_textview);
         descriptionHtmlTextView.setMovementMethod(LinkMovementMethod.getInstance());
         descriptionHtmlTextView.setText(Html.fromHtml(getResources().getString(R.string.description_html)));
+//        descriptionHtmlTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
     }
 
@@ -121,16 +104,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void voidParam) {
             super.onPostExecute(voidParam);
-            ((Button)findViewById(R.id.launch_button)).setText(R.string.launch);
+            ((Button) findViewById(R.id.launch_button)).setText(R.string.launch);
             ((Button) findViewById(R.id.launch_button)).setEnabled(true);
             if (this.error != null) {
                 Toast.makeText(MainActivity.this, R.string.not_rooted, Toast.LENGTH_LONG).show();
                 Log.e("wechatmomentstat", "exception", this.error);
                 try {
-                       ((TextView)findViewById(R.id.description_textview_2)).setText("Error: " + this.error.getMessage());
-                    } catch (Throwable e) {
-                        Log.e("wechatmomentstat", "exception", e);
-                    }
+                    ((TextView) findViewById(R.id.description_textview_2)).setText("Error: " + this.error.getMessage());
+                } catch (Throwable e) {
+                    Log.e("wechatmomentstat", "exception", e);
+                }
 
                 return;
             }
@@ -140,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
 
 
 }

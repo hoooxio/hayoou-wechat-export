@@ -1,18 +1,18 @@
 <resources>
-    <string name="app_name">哈友微信朋友圈分析</string>
-    <string name="not_rooted">查询微信缓存失败。请允许root权限后重试。</string>
+    <string name="app_name">微服</string>
+    <string name="not_rooted">查询微信缓存失败。请重试。</string>
     <string name="wechat_version_label">微信版本</string>
     <string name="wechat_version_supported">恭喜，支持该微信版本</string>
     <string name="wechat_version_unsupported">暂不支持该微信版本</string>
     <string name="wechat_not_found">找不到微信</string>
     <string name="supported_wechat_versions">支持的微信版本</string>
     <string name="launch">开始分析你的朋友圈</string>
-    <string name="description_0">哈友微信朋友圈分析可分析和导出你的朋友圈数据。</string>
-    <string name="description_1">请确认已允许本APP获得root权限。如无法使用请安装kingroot/清除微信数据/刷新朋友圈/账号填入 0 </string>
-    <string name="description_2">点击“运行”开始分析你的微信朋友圈。这将需要几分钟时间。</string>
+    <string name="description_0">微服 App 实现微信服务商一站式管理解决方案</string>
+    <string name="description_1">提供微信个人聊天记录、群聊记录、朋友圈以及联系人等管理功能</string>
+    <string name="description_2">更多功能正在开发中，敬请期待</string>
     <string name="exporting_sns">正在导出朋友圈数据...</string>
     <string name="stat_title">%s 的朋友圈统计数据</string>
-    <string name="from_date">哈友微信朋友圈分析(hayoou.com/pyqfx)\r\n 从 %s 至今：</string>
+    <string name="from_date">微服 App\nyins.co/pyqfx\n\n从 %s 至今：</string>
     <string name="my_sent_moments">你发送了 %d 条朋友圈</string>
     <string name="my_sent_photos">你发了 %d 张图片</string>
     <string name="my_like_numbers">你点了 %d 个赞</string>
@@ -42,16 +42,7 @@
     <string name="export_success">已将所选朋友圈导出到 %s</string>
     <string name="description_html">
         &lt;p&gt;
-        Powered by：
-        &lt;/p&gt;
-        &lt;p&gt;
-        &lt;a href=http://f.hayoou.com/blogs/entry/%E5%93%88%E5%8F%8B%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"&gt;hayoou.com/pyqfx&lt;/a&gt;
-        &lt;/p&gt;
-        &lt;p&gt;
-        Powered by
-        &lt;/p&gt;
-        &lt;p&gt;
-        &lt;a href=http://f.hayoou.com/"&gt;hayoou.com&lt;/a&gt;
+            Copyright © 2018 银杉科技
         &lt;/p&gt;
     </string>
     <string name="description_3">hayoou.com 账号</string>
